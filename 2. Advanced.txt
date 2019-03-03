@@ -40,7 +40,10 @@ git diff updates master   // shows what's the difference in between the two bran
 
 //// if there is no difference then add some other files and commit and then check difference
 git add -u
+<<<<<<< HEAD
 git commit -am "Updated files and modified"
+=======
+>>>>>>> very-bad
 git checkout master    //// switch branch from updates to master
 git merge updates      //// merges changes in updates to master
 git branch -d updates    ///// deletes the branch updates
@@ -54,4 +57,8 @@ git commit -am "causing issues again"
 
 git checkout master
 /// change any of the file and add and commit it
+<<<<<<< HEAD
 git merge very-bad   ss
+=======
+git merge very-bad   s
+>>>>>>> very-bad
