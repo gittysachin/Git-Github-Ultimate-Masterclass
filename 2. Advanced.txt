@@ -50,10 +50,7 @@ git hist
 git checkout -b very-bad
 git branch -a    /// shows all branches including current branch
 git commit -am "causing issues again"
-<<<<<<< HEAD
 
 git checkout master
 /// change any of the file and add and commit it
-git merge very-bad
-=======
->>>>>>> very-bad
+git merge very-bad 
