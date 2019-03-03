@@ -1,0 +1,59 @@
+////////// Comparing differences
+
+git hist
+git diff a7d3498 b017423 HEAD
+git difftool a7d3498 HEAD
+
+//////////// Branching and Merging
+
+Branch = Timeline of Commits
+Branch Names are Labels
+Deleting branch label only
+
+Git Branching - we can create a new branch and rejoin the branch by Merging
+in any changes that occured on the new Branch
+
+Types of Merging   ----
+
+1. Fast-forward Merging -> simplest case, like never branched, can be disabled
+///// git will merge all commits from all the other branches directly on to the parent branch as if we never branched off to begin with
+
+2. Automatic Merging -> non-conflicting merge detected, preserves both timeline, merge commit on destination
+///// doing so the old branch's timeline is preserved and a new merge commit is created to show the merging of the two branches
+
+3. Manual Merging -> Automatic merge not possible, conflicting merge state, changes saved in merge commit
+///// which means all merge conflicts must be resolved prior to move forward with the commit
+///// once all conflicts are resolved then those changes are saved as a merge commit
+
+
+//////////// Special Markers
+
+like "pointers", HEAD, points to last commit of current branch, can be moved (Advanced)
+
+
+/////////////////////////////////////////////Branching
+
+git branch   /// shows current branch
+git checkout -b updates   //// creates a new branch "updates" (-b) and switches the branch to updates
+git hist         // history of the branch master is associated to updates
+git diff updates master   // shows what's the difference in between the two branches
+
+//// if there is no difference then ad some other files and commit and then check difference
+
+git checkout master    //// switch branch from updates to master
+git merge updates      //// merges changes in updates to master
+git branch -d updates    ///// deletes the branch updates
+
+git branch
+git hist
+
+git checkout -b very-bad
+git branch -a    /// shows all branches including current branch
+git commit -am "causing issues again"
+<<<<<<< HEAD
+
+git checkout master
+/// change any of the file and add and commit it
+git merge very-bad
+=======
+>>>>>>> very-bad

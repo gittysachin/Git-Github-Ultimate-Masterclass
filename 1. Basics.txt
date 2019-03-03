@@ -1,0 +1,81 @@
+mkdir projects  /// make the folder
+
+git init demo   /// initializes empty git repository in demo in current directory
+
+ls -al    /// see all the files and folders of this repository
+
+git status    /// check what's going on the git repository
+
+git add README.md   // it moves our readme file from working directory to git's staging area
+
+git commit -m "First file in demo repo"
+
+clear //// clears all the commands typed in command line
+
+rm -rf .git  /// deletes the .git folder
+
+type > LICENCE.md       /// creates a new file named LICENCE.md in windows
+touch LICENCE.md       /// creates a new file named LICENCE.md in macOS
+
+
+git add .
+git commit    //// the whatever you add in our file will be your commit message
+
+git log   /// to see all the commits that are part of his repository
+git show  // to see last commit containing all the changes
+
+clear   /// to clean all the commands in command prompt
+
+git ls-files  // to checked tracked files
+
+git commit -am "commiting and adding all the modified files"   /// -a is for modified adding modified files and combining -m parameter with it
+
+git reset HEAD README.md   /// to unstage the README.md file
+
+git checkout -- README.md    // to discord the changes made during last commit in README.md file
+
+git help   //// to see all the commands that we can use in git bash
+
+git log --oneline --graph --decorate --all
+
+git config --global alias.hist "log --oneline --graph --decorate --all"
+
+git config --global --list
+
+git hist   /// to show history
+
+git hist -- LICENCE.md
+
+////////////////// Rename the file
+
+git mv example.txt demo.txt     //// moving the file from example to demo effectively renaming the file
+git status
+
+////////////////// Delete the file
+
+git rm LICENCE.md
+git status
+
+////////////////// Managing files from outside of git
+
+mv LICENCE.md LICENSE.txt    /// using only bash command not the git oneline
+ls -l
+git status
+git add -u   //// update changes (only for deletion)
+git status
+git add -A     /// will cover all types of modifications possible and made the changes accordingly
+git commit -m "rename and add"
+
+//////////////// excluding unwanted files that we don't want in our repository
+type > application.log
+type > .gitignore
+
+then in .gitignore file type the name of the files that you want git to gitignore
+if you want every file with extention ".log" to be ignored then type " *.log " in .ignore file
+
+git status
+
+//but .gitignore is a file itself so add it
+
+git add .gitignore
+git commit -m "Adding ignore file"
