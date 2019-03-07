@@ -40,7 +40,6 @@ git diff updates master   // shows what's the difference in between the two bran
 
 //// if there is no difference then add some other files and commit and then check difference
 git add -u
-git commit -am "Updated files and modified"
 git checkout master    //// switch branch from updates to master
 git merge updates      //// merges changes in updates to master
 git branch -d updates    ///// deletes the branch updates
@@ -53,6 +52,42 @@ git branch -a    /// shows all branches including current branch
 git commit -am "causing issues again"
 
 git checkout master
-/// change any of the file and add and commit it
-git merge very-bad   ss
-s
+git merge very-bad   s
+
+//////////////// Special Events with Tags
+
+git tag mytag     ///// creates tag named mytag
+git tag --list
+git hist
+git tag -d mytag    //// delete mytag
+
+git tag -a v1.0 -m "Release 1.0"    ///// annotated Tags
+git tag --list
+git hist
+git show v1.0
+
+////////////////////// Stashing
+
+git stash
+git stash list
+/// edit a file
+git commit -am "asdasdAS"
+git stash pop
+git stash list
+
+
+/////////////////////// Reset and Reflog
+
+git hist
+git reset 005fdad --soft
+git status
+git reset 5d133ed --mixed    // unstages the changes after 5d133ed
+git hist
+git status
+git reset 5d133ed --hard
+
+
+git reflog   ///// shows all the actions that we've taken
+git reset --hard 5d133ed
+
+git log --oneline

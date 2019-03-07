@@ -1,0 +1,17 @@
+///// In previous section we used SSH Authentication with Github
+///// In this section we'll setup another authentication method SSH ---- It saves time once its setup is done
+
+// By the way SSH stands for Secure Shell
+// and GPG stands for Gnu Privacy Guard
+/// 1. Generate SSH key on your local system
+
+ls .ssh     /// checks if .ssh if is present or not
+mkdir .ssh        //// create directory .ssh
+
+cd .ssh
+ssh-keygen -t rsa -C "your@email.com"   /// generate a ssh key, -t for type, type is gonna be rsa, -C for combinate
+
+ls -al   /// to list all files in the directory you saved your ssh keys
+// open the file with exension .pub and copy text, then paste it in your github ssh settings
+
+ssh -T git@github.com    /// to connect your PC to github SSH

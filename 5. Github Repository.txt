@@ -1,0 +1,161 @@
+git clone git@github.com:gittysachin/my-website.git      //// clone with SSH
+ls -l
+cd my-website
+ls -al
+git remote -v
+cd ..
+ls -l
+rm -rf my-website    /// deletes the my-website folder
+
+
+///// seeding the repository with sample content
+
+git clone git@github.com:gittysachin/my-website.git website   //// clones into website folder instead of my-website
+
+/// download initializr (Bootstrap) and extract then
+
+cp -R ~/Downloads/initializr/* .      // copy, recursive, everything under initializr folder, destination folder (.  -> for current path)
+ls -l
+git status
+git add .
+git commit -m "Adding initial website files"
+git push origin master
+
+
+/////////////////// Publish Back to Github
+
+git push
+/// when we have tracked branches, the remote reference (origin) and branch name (master) are optional
+/// but if there's not, then we have to type several command like ---> git config --global push.default simple
+git version
+
+
+////////////////////////////
+
+Git fetch can be done any time to update your remote-tracking branches.
+
+Git pull is basically a git fetch followed by a git merge.
+
+Git fetch only downloads data from a remote repository, but it does not integrate any of these new data into your working files.
+
+Git pull updates the current HEAD branch with the latest changes from the remote server. That mean git pull not only downloads new data; it also directly integrates it into your current working files.
+
+A git pull is what you would do to bring a local branch up-to-date with its remote version, while also updating your other remote tracking branches.
+
+When you fetch, Git gathers any commits from the target branch that do not exist in your current branch and stores them in your local repository.
+
+Merge conflicts can occur with git pull when two people are working on the same piece of code. Git pull brings local branch up-to-date with remote copy while also updating the other remote-tracking branches.
+
+git pull = git fetch + git merge
+
+////////////////////   Fetch and pull
+
+// edit any file then
+git commit -am "Updating README"
+git push    ////// git can reject your push if you've done an mistake
+git fetch
+git pull
+git push
+
+// change the name of repo from my-website to website
+
+git remote -v
+git remote set-url origin git@github.com:gittysachin/website.git
+git remote -v
+git remote show origin    ///// additional info
+
+
+//////////////////// Synchronizing our Changes with our local repository
+
+// create a file in github in browser
+METHOD 1.
+  git fetch
+  git status
+  git merge
+  git status
+
+METHOD 2.
+  git pull
+  git status
+
+
+clear
+/// copy the full SHA by going into commits history
+git show a4e828cadfa9b5bd31c1b801e034f125d6e70251
+/// we can add new branch 'example' on github website and commit those changes
+
+/// THEN
+
+git pull
+git status
+git checkout -b remove-ipsum
+ls -l
+git rm lipsum.txt
+git status
+git commit -m "Removing lipsum file"
+git push -u origin remove-ipsum     /// REMINDER ----> -u sets up the tracking relationship
+ls -l
+
+
+
+
+git checkout master
+git pull
+git merge remove-ipsum
+git status
+git push
+
+/// delete remove-ipsum branch from github
+
+git branch -a
+git branch -d remove-ipsum
+git branch -a
+git fetch -p     ///// -p is prune option which means it will look for dead branches   (will check from github)
+git branch -a
+
+
+///////////////////////////////// Locally switching branches on GITHUB
+
+git status
+git fetch       //// update our remote
+git status
+git branch -a
+git checkout update-readme
+//edit readme file
+git commit -am "More tweaks to readme"
+git push   or git push -u origin update-readme
+
+git config -global -e
+git pull --all      /// pulls all the branches rather than any specific branch
+
+git merge update-readme
+git checkout master
+
+git push origin :update-readme    //// deletes all the branch after colon so we don't need a git fetch with the prune option
+
+
+//////////////////// Pull with rebase
+
+// edit any file on github and another file on local repo
+git commit -am "Updating index.html locally before rebase"
+git fetch       //// will update our local git with whatever changed on the remote side
+git status
+git pull --rebase     /// we could use merge here but we used rebase
+// This moves the entire feature branch to begin on the tip of the master branch,
+// effectively incorporating all of the new commits in master. But, instead of using a merge commit,
+// rebasing re-writes the project history by creating brand new commits for each commit in the original branch.
+git hist
+
+
+////////////////////////// Dealing with a conflict while pulling
+
+//edit a file on github branch develop
+git checkout develop
+git fetch
+// edit a file
+git pull            //// there will be a conflict
+git mergetool
+git commit -m "Resolving conflict using p4merge"
+gti status
+rm *.orig
+git push

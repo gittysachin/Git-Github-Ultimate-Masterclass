@@ -1,0 +1,8 @@
+/////////////  Linking our github repository
+
+git remote -v           //// tells something  if we've set remote connection
+git remote add origin https://github.com/gittysachin/Git-Github-Ultimate-Masterclass.git
+/// here add takes two parameters one - origin --- the name of the remote reference, and the second parameter is the full url to the remote
+git remote -v
+
+git push -u origin master --tags       /// -u sets connection between our local repository and remote repo
